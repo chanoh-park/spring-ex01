@@ -66,7 +66,7 @@ public class BoardMapperTests {
 	//@Test
 	public void testUpdate() {
 		BoardVO board = new BoardVO();
-		board.setBno(5);
+		board.setBno(5L);
 		board.setTitle("수정된 제목");
 		board.setContent("수정된 내용");
 		board.setWriter("user00");
