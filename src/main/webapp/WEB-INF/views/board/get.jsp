@@ -5,59 +5,60 @@
 
 <%@ include file="../includes/header.jsp" %>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="panel-header">Board Register</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-
-<hr />
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel card-default">
-		
-			<div class="panel-heading">Board Register</div>
-			<!-- / .panel-heading -->
-			
-			<div class="panel-body">
-				
-				<div class="form-group">
-					<label>Bno</label> <input class="form-control" name="bno" value='<c:out value="${board.bno }" />' readonly="readonly">
-				</div>
-				
-				<div class="form-group">
-					<label>Title</label> <input class="form-control" name="title" value='<c:out value="${board.title }" />' readonly="readonly">
-				</div>
-				
-				<div class="form-group">
-						<label>Text area</label>
-						<textarea rows="3" class="form-control" name="content" readonly="readonly"><c:out value="${board.content }" /></textarea>
-				</div>
-				
-				<div class="form-group">
-					<label>Writer</label> <input class="form-control" name="writer" value='<c:out value="${board.writer }" />' readonly="readonly">
-				</div>
-				
-				<button data-oper="modify" class="btn btn-default">Modify</button>
-				<button data-oper="list" class="btn btn-info">List</button>
-				
-				<form id="operForm" action="/board/modify" method="get">
-					<input type="hidden" id="bno" name="bno" value='<c:out value="${board.bno }" />'/>
-				</form>
-					
-				</div>
-			
-			</div>
-			<!-- end panel-body -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="panel-header">Board Register</h1>
 		</div>
-		<!-- end panel -->
+		<!-- /.col-lg-12 -->
 	</div>
-	<!-- /.col-lg-12 -->
+	<!-- /.row -->
+	
+	<hr />
+	
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Board Read Page</div>
+				<!-- / .panel-heading -->
+				
+				<div class="panel-body">
+					
+					<div class="form-group">
+						<label>Bno</label> <input class="form-control" name="bno" value='<c:out value="${board.bno }" />' readonly="readonly">
+					</div>
+					
+					<div class="form-group">
+						<label>Title</label> <input class="form-control" name="title" value='<c:out value="${board.title }" />' readonly="readonly">
+					</div>
+					
+					<div class="form-group">
+							<label>Text area</label>
+							<textarea rows="3" class="form-control" name="content" readonly="readonly"><c:out value="${board.content }" /></textarea>
+					</div>
+					
+					<div class="form-group">
+						<label>Writer</label> <input class="form-control" name="writer" value='<c:out value="${board.writer }" />' readonly="readonly">
+					</div>
+					
+					<button data-oper="modify" class="btn btn-default">Modify</button>
+					<button data-oper="list" class="btn btn-info">List</button>
+					
+					<form id="operForm" action="/board/modify" method="get">
+						<input type="hidden" id="bno" name="bno" value='<c:out value="${board.bno }" />'/>
+					</form>
+						
+				</div>
+				<!-- end panel-body -->
+			</div>
+			<!-- end panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
 </div>
-<!-- /.row -->
+<!-- /.container -->
 
 <script type="text/javascript">
 	$(document).ready(function() {

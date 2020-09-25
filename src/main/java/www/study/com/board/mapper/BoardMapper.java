@@ -3,10 +3,13 @@ package www.study.com.board.mapper;
 import java.util.List;
 
 import www.study.com.board.domain.BoardVO;
+import www.study.com.board.domain.Criteria;
 
 public interface BoardMapper {
 	
 	public List<BoardVO> getList();
+	
+	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	public void insert(BoardVO board);
 	
