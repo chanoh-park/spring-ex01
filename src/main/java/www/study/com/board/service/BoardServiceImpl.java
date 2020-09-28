@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import www.study.com.board.domain.BoardVO;
+import www.study.com.board.domain.Criteria;
 import www.study.com.board.mapper.BoardMapper;
 
 @Log4j
@@ -47,11 +48,21 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.delete(bno) == 1;
 	}
 
+	/*
 	@Override
 	public List<BoardVO> getList() {
 		log.info("getList......");
 		
 		return mapper.getList();
 	}
+	 */
+	
+	@Override
+	public List<BoardVO> getList(Criteria cri) {
+		log.info("get List with criteria : " + cri);
+		
+		return mapper.getListWithPaging(cri);
+	}
+
 	
 }

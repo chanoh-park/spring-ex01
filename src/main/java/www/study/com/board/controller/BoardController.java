@@ -3,6 +3,7 @@ package www.study.com.board.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import www.study.com.board.domain.BoardVO;
+import www.study.com.board.domain.Criteria;
+import www.study.com.board.domain.PageDTO;
 import www.study.com.board.service.BoardService;
 
 @Controller
@@ -21,6 +24,7 @@ public class BoardController {
 	
 	private BoardService service;
 	
+	/*
 	@GetMapping("/list")
 	public void list(Model model) {
 		
@@ -28,6 +32,14 @@ public class BoardController {
 		
 		model.addAttribute("list", service.getList());
 		
+	}
+	*/
+	
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) {
+		log.info("list : " + cri);
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
 	@GetMapping("/register")
@@ -49,7 +61,7 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(@RequestParam("bno") Long bno, Model model) {
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		
 		log.info("/get or modify");
 		

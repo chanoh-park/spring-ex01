@@ -2,6 +2,8 @@ package www.study.com.board.mapper;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import www.study.com.board.domain.BoardVO;
+import www.study.com.board.domain.Criteria;
 import www.study.com.board.mapper.BoardMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,7 +24,7 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	public BoardMapper mapper;
 
-	@Test
+	//@Test
 	public void testGetList() {
 		mapper.getList().forEach(board -> log.info(board));
 	}
@@ -73,6 +76,18 @@ public class BoardMapperTests {
 		
 		int count = mapper.update(board);
 		log.info("UPDATE COUNT : " + count);
+	}
+	
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		// 10개씩 3페이지
+		cri.setPageNum(3);
+		cri.setAmount(10);
+		
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		
+		list.forEach(board -> log.info(board));
 	}
 
 }
