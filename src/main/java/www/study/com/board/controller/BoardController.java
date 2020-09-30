@@ -86,8 +86,10 @@ public class BoardController {
 		
 		rttr.addFlashAttribute("pageNum", cri.getPageNum());
 		rttr.addFlashAttribute("amount", cri.getAmount());
+		rttr.addFlashAttribute("type", cri.getType());
+		rttr.addFlashAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 		
 	}
 	
@@ -102,8 +104,10 @@ public class BoardController {
 		
 		rttr.addFlashAttribute("pageNum", cri.getPageNum());
 		rttr.addFlashAttribute("amount", cri.getAmount());
+		rttr.addFlashAttribute("type", cri.getType());
+		rttr.addFlashAttribute("keyword", cri.getKeyword());
 		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 		
 	}
 	
